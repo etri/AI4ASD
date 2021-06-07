@@ -1,4 +1,4 @@
-# ** PBR4AI License and Service Agreement**
+# PBR4AI License and Service Agreement
 
 # Preamble
 This License and Service Agreement (LSA) applies to all works and their derivative works based on [source form version] and [object form version] of PBR4AI. Currently, the LSA for PBR4AI has two policies, 'Open Source License' and 'Commercial License'. Therefore, all works including the source code and executable code of PBR4AI and derivative works based thereon are subject to either 'Open Source License' or 'Commercial License' depending on the user's needs and purpose. Details related to the selection of the applicable license are specified in this LSA. If you use any or all of PBR4AI in any form, you are deemed to have consented to this LSA. If you breach any of the terms and conditions set forth in this LSA, you are solely responsible for any losses or damages incurred by “Electronics and Telecommunications Research Institute” (ETRI), and ETRI assume no responsibility for you or any third party.
@@ -9,7 +9,7 @@ If you use the [source form version] or [object form version] of PBR4AI in whole
 # Open Source License
 If you use the [source form version] or [object form version] of PBR4AI in whole or in part to develop a code or a derivative work, and you do not commercialize the result in any form, you will be covered under an open source license. PBR4AI is in accordance with Free Software Foundation (FSF)'s open source policy, and is allowed to use it in the appropriate scope and manner, and you must comply with the applicable open source license policy applied to PBR4AI. PBR4AI is, in principle, subject to GNU General Public License version 3.0(GPLv3). If you have acquired all or a part of the PBR4AI in any way and it is subject to a license other than the open source license described above, please contact the following address for the technical support and other inquiries before use, and check the usage information.
 
-# ** PBR4AI 라이선스와 서비스 규약**
+# PBR4AI 라이선스와 서비스 규약
 
 # Preamble
 본 License and Service Agreement(LSA)는 PBR4AI의 ‘소스 코드 버전’과 ‘실행 코드 버전을 포함한 모든 저작물 및 그로부터 기반한 파생 저작물’에 적용됩니다. 현재 PBR4AI의 LSA는 ‘오픈 소스 라이선스’와 ‘상용 라이선스’의 두 가지 정책을 가지고 있습니다. 따라서 PBR4AI의 소스 코드 및 실행 코드를 포함한 모든 저작물 및 그로부터 기반한 파생 저작물은 사용자의 요구 및 목적에 따라 ‘오픈 소스 라이선스’ 또는 ‘상용 라이선스’ 중 하나의 적용을 받으며, 적용 라이선스의 선택과 관련된 세부 사항은 본 LSA에 규정되어 있습니다. 귀하가 어떤 형태로든 PBR4AI의 전부 또는 일부를 사용하는 경우, 귀하는 본 LSA에 동의한 것으로 간주됩니다. 귀하가 본 LSA에 명시된 조항을 위반하는 경우, 해당 위반으로 인하여 한국전자통신연구원(ETRI)가 입을 수 있는 모든 손실 및 피해, 그리고 그 결과에 대한 책임은 전적으로 귀하에게 귀속되며, 한국전자통신연구원(ETRI)는 귀하 또는 제3자에 대해 어떠한 책임도 부담하지 않습니다.
