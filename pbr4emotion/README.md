@@ -1,5 +1,5 @@
 ## Citation
-If you find our work useful in your research, please consider citing:
+If you use this code for your research, please cite our paper:
 
 ```
 @ARTICLE{9174732,
