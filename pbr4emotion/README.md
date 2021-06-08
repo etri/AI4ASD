@@ -1,3 +1,6 @@
+## **LICENSE**
+Please see [LICENSE.md](../LICENSE.md).
+
 ## Citation
 If you use this code for your research, please cite our paper:
 
