@@ -3,7 +3,7 @@ If you find our work useful in your research, please consider citing:
 
 ```
 @ARTICLE{9174732,
-  author={Han, Byungok and Yun, Woo-Han and Yoo, Jang-Hee and Kim, Won Hwa},
+  author={Han, ByungOk and Yun, Woo-Han and Yoo, Jang-Hee and Kim, Won Hwa},
   journal={IEEE Access}, 
   title={Toward Unbiased Facial Expression Recognition in the Wild via Cross-Dataset Adaptation}, 
   year={2020},
