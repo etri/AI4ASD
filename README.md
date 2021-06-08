@@ -13,7 +13,7 @@ ASD screening tool for AI(Artificial intelligence) technology
 -	Interaction / inference-based ASD early screening system of multiple sensory information
 
 ## **LICENSE**
-Please see [LICENSE.md](./README.md)
+Please see [LICENSE.md](./LICENSE.md)
 
 ## **Acknowledgement**
 This work was supported by Institute of Information & Communications Technology Planning & Evaluation (IITP) grant funded by the Korea government(MSIT) (2019-0-00330, Development of AI Technology for Early Screening of Infant/Child Autism Spectrum Disorders based on Cognition of the Psychological Behavior and Response)
