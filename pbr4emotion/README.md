@@ -1,6 +1,9 @@
 ## **LICENSE**
 Please see [LICENSE.md](../LICENSE.md).
 
+## Contact
+If you have any question or comment, please email <byungok.han@etri.re.kr>.
+
 ## Citation
 If you use this code for your research, please cite our paper:
 
@@ -15,5 +18,4 @@ If you use this code for your research, please cite our paper:
   pages={159172-159181},
   doi={10.1109/ACCESS.2020.3018738}}
 ```
-
 
