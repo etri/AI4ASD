@@ -21,5 +21,8 @@ def argument_parser_fd():
 
     parser.add_argument('--det_method', default='retina', type=str, metavar='model',
                     help='face detect method(mtcnn, retina)')
-    args = parser.parse_args()
+
+    #args = parser.parse_args()
+    args, _ = parser.parse_known_args()
+
     return args

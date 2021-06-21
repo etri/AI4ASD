@@ -71,5 +71,7 @@ def argument_parser_cda():
     parser.add_argument('--boundary', default=[50, 100, 150], nargs='+', type=int,
                         metavar='N', help='change boundary for ds_alpha, ace_rate')
 
-    args = parser.parse_args()
+    #args = parser.parse_args()
+    args, _ = parser.parse_known_args()
+
     return args

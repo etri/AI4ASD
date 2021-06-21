@@ -32,8 +32,10 @@ def PBR_libFER_predict(cv_img):
     Note: libFER Wrapper API
 
     Arguments: 
+        cv_img (opencv image) : image to detect faces
 
     Returns:
+        predicted_results(list) : ['Surprise', 'Fear', 'Disgust', 'Happiness', 'Sadness', 'Anger', 'Neutral']
 
     """
 

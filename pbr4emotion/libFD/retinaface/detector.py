@@ -50,7 +50,7 @@ class RetinaFaceDetector:
         """
 
         img = img_raw.astype(np.float32)
-        im_height, im_width, _ = img.shape[:2]
+        im_height, im_width = img.shape[:2]
         scale = torch.Tensor([im_width, im_height, im_width, im_height])
         img -= (104, 117, 123)
         img = img.transpose(2, 0, 1)
