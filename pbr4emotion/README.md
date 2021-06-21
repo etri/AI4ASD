@@ -6,7 +6,7 @@
   File_Name Emotion_Label Dataset_Label
   /AffectNet/basic/Image/bb/train_04757.jpg 0 0
   ```
-  - Note that the first row of a metafile is headers of columns
+  - Note that the first row of a metafile describes headers of columns
 
 ## **Quick Start**
 Command to run our module:
