@@ -8,13 +8,13 @@
   ```
   - Note that the first row of a metafile describes headers of columns
 
-## **Train a model**
+## **Training a model**
 To train a model(resnet-50), use this command:
 ```
 python libFER_train_test.py --model resnet50 --root_path <path_to_dataset> --train_list <path_to_train_metafile> --val_list <path_to_validation_metafile> --save_path <path_to_result_dir> 
 ```
 
-## **Run**
+## **Testing on a saved model**
 Command to run our module:
 ```
 python ESP_predict_test.py --model resnet50 --<path to model>
