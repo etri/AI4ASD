@@ -1,6 +1,6 @@
 ## **Prerequisites**
-- Facial expression dataset ([AffectNet](http://mohammadmahoor.com/affectnet/), RAF, etc.)
-- Metafile for the dataset
+- Download a facial expression dataset ([AffectNet](http://mohammadmahoor.com/affectnet/), [RAF](http://www.whdeng.cn/RAF/model1.html), etc.)
+- Make a metafile for the dataset
   - Example
   ```
   File_Name Emotion_Label Dataset_Label
