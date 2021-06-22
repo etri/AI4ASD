@@ -17,7 +17,7 @@ python libFER_train_test.py --model resnet50 --root_path <path_to_dataset> --tra
 ## **Testing on a saved model**
 Command to run our module:
 ```
-python ESP_predict_test.py --model resnet50 --<path to model>
+python ESP_predict_test.py --model resnet50 --resume <path to model>
 ```
 
 ## **LICENSE**
