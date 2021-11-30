@@ -1,0 +1,107 @@
+""" 
+   * Source: libFPD.api.py
+   * License: PBR License (Dual License)
+   * Modified by Howon Kim <hw_kim@etri.re.kr>
+   * Date: 15 Nov 2021, ETRI
+
+"""
+
+import numpy as np
+import cv2 as cv
+
+
+def get_projected_axis(cam_mtx, rmtx, tvec, axis_length=100):
+        
+    """ get_projected_axis function to get the projected each xyz axis point at image coord.
+    
+    Args: 
+        cam_mtx: 3x3
+        rmtx: 3x3
+        tvec: 3x1            
+    """
+    
+    axis = np.array([[0, 0, 0], [axis_length, 0, 0], [0, axis_length, 0], [0, 0, axis_length]], dtype=np.float32)
+    axis_3d_cam  = np.matmul(rmtx, axis.T).T
+    axis_3d_cam += tvec.T
+    axis_2d_cam  = np.matmul(cam_mtx, axis_3d_cam.T)
+    axis_2d_cam  = axis_2d_cam.T
+    axis_2d_cam[:, 0] = axis_2d_cam[:, 0]/axis_2d_cam[:, 2]
+    axis_2d_cam[:, 1] = axis_2d_cam[:, 1]/axis_2d_cam[:, 2]
+    axis_2d_cam_px2  = axis_2d_cam[:, 0:2]
+    
+    return axis_2d_cam_px2
+
+
+def get_projected_points(cam_mtx, rmtx, tvec, pt3D_px3):
+    
+    """ get_projected_points function to get the projected 3D points at image coord.
+    
+    Args: 
+        cam_mtx: 3x3
+        rmtx: 3x3
+        tvec: 3x1           
+        pt3D_px3: px3
+    """
+    
+    pt3D  = np.matmul(rmtx, pt3D_px3.T).T
+    pt3D += tvec.T
+    pt2D_px3 = np.matmul(cam_mtx, pt3D.T).T
+    pt2D_px3[:, 0] = pt2D_px3[:, 0]/pt2D_px3[:, 2]  
+    pt2D_px3[:, 1] = pt2D_px3[:, 1]/pt2D_px3[:, 2]    
+    pt2D_px2       = pt2D_px3[:, 0:2]
+    
+    return pt2D_px2
+
+
+def plot_kpts(image, kpts, color=(0, 255, 0), radius=2):
+        
+    """ plot_kpts function to plot detected facial landmarks
+    
+    Args: 
+        image: 3xhxw
+        kpts: nx2            
+    """
+
+    image = image.copy()
+    [h, w, c] = image.shape
+    kpts = np.round(kpts).astype(np.int32)
+    
+    for i in range(kpts.shape[0]):
+        st = kpts[i, :2]
+        image = cv.circle(image, (st[0], st[1]), 1, color, radius)  
+        
+    return image
+
+
+def plot_axis(image, kpts, mode='pred'):
+    
+    """ plot_axis function to plot detected facial 3D pose
+    
+    Args: 
+        image: 3xhxw
+        kpts: nx2            
+    """
+    
+    image = image.copy()
+    [h, w, c] = image.shape
+    kpts = np.round(kpts).astype(np.int32)
+    
+    st = kpts[0, :2]
+    if mode == 'label':
+        ed = kpts[1, :2]
+        image = cv.arrowedLine(image, (st[0], st[1]), (ed[0], ed[1]), (255, 255, 255), 2)
+        ed = kpts[2, :2]
+        image = cv.arrowedLine(image, (st[0], st[1]), (ed[0], ed[1]), (255, 255, 255), 2)
+        ed = kpts[3, :2]
+        image = cv.arrowedLine(image, (st[0], st[1]), (ed[0], ed[1]), (255, 255, 255), 2)
+    else:
+        ed = kpts[1, :2]
+        image = cv.arrowedLine(image, (st[0], st[1]), (ed[0], ed[1]), (0, 0, 256), 2)
+        ed = kpts[2, :2]
+        image = cv.arrowedLine(image, (st[0], st[1]), (ed[0], ed[1]), (0, 256, 0), 2)
+        ed = kpts[3, :2]
+        image = cv.arrowedLine(image, (st[0], st[1]), (ed[0], ed[1]), (256, 0, 0), 2)
+    
+
+    return image
+
