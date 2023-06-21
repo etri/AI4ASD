@@ -45,5 +45,14 @@ If you use this code for your research, please cite our paper:
   number={},
   pages={159172-159181},
   doi={10.1109/ACCESS.2020.3018738}}
+
+@article{HAN2023126439,
+  author = {ByungOk Han and Cheol-Hwan Yoo and Ho-Won Kim and Jang-Hee Yoo and Jinhyeok Jang},
+  journal = {Neurocomputing},
+  title = {Deep Emotion Change Detection via Facial Expression Analysis},
+  year = {2023},
+  pages = {126439},
+  issn = {0925-2312},
+  doi = {https://doi.org/10.1016/j.neucom.2023.126439}}
 ```
 
