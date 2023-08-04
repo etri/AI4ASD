@@ -19,9 +19,9 @@ All code related to this work will be made available.
 ## Get Started
 - Clone this repo and install dependencies:
 ```bash
+install  Python>=3.8 environment with PyTorch>=1.8
 git clone this repository
 cd pbr4RRB
-install Pytorch (1.8)
 pip install -r requirements.txt
 ```
 
