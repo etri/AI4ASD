@@ -3,7 +3,7 @@
 
 
 This repository provides the official PyTorch implementation of the following paper:
-<img src="fig_architecture.png" width="800">
+<img src="fig_architecture.png" width="1000">
 
 > Video-based Stereotyped Behavior Detection for Early Diagnosis of Autism Spectrum Disorder
 >
