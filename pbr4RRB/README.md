@@ -77,4 +77,4 @@ and not performed, respectively. The videos were captured with four Azure Kinect
 Please see [LICENSE.md](../LICENSE.md).
 
 ## Contact
-If you have any question or comment, please email <hw_kim@etri.re.kr>.
+If you have any question or comment, please email <ch.yoo@etri.re.kr>.
