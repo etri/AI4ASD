@@ -72,3 +72,9 @@ Examples of result images on the *ASD-Pointing* dataset. The green and red color
 and not performed, respectively. The videos were captured with four Azure Kinect cameras in three living lab spaces.
 
 <!--<img src="fig_result.png" width="1000">-->
+
+## LICENSE
+Please see [LICENSE.md](../LICENSE.md).
+
+## Contact
+If you have any question or comment, please email <hw_kim@etri.re.kr>.
