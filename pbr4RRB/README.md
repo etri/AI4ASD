@@ -71,7 +71,7 @@ You can test our network by putting pre-trained models on checkpoints folder.
 Examples of result images on the *SSBD* and *ESBD* dataset. 
 The green and red colors denote whether a frame belongs to a repetitive segment or not, respectively.
 
-<!--<img src="fig_result.png" width="1000">-->
+<img src="fig_result.png" width="1000">
 
 ## LICENSE
 Please see [LICENSE.md](../LICENSE.md).
