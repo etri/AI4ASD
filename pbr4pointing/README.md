@@ -3,7 +3,7 @@
 
 
 This repository provides the official PyTorch implementation of the following paper:
-<img src="fig_architecture.png" width="800">
+<img src="fig_architecture.png" width="1000">
 
 > Pointing Gesture Recognition via Self-supervised Regularization for ASD
 Screening 
@@ -20,10 +20,10 @@ All code related to this work will be made available.
 ## Get Started
 - Clone this repo and install dependencies:
 ```bash
+install  Python>=3.8 environment with PyTorch>=1.8
 git clone this repository
-cd PointDetectNet-pytorch
+cd pbr4pointing
 pip install -r requirements.txt
-install Pytorch (1.8.1)
 ```
 
 ## Test
@@ -62,8 +62,8 @@ python main.py --model_name 'model_name' --SSL ['None', 'SimSiam', 'BYOL'] --bac
 We provide our pre-trained models. 
 You can test our network by putting pre-trained models on checkpoints/logs/resnet50_ntu or resnet50_ntu_SimSiam/model_best.checkpoint
 
-- ResNet-50 (baseline): https://drive.google.com/file/d/
-- Proposed<sub>SimSiam</sub>: https://drive.google.com/file/d/
+- ResNet-50 (baseline): https://drive.google.com/file/t/
+- Proposed<sub>SimSiam</sub>: https://drive.google.com/file/t/
 
 
 
@@ -73,3 +73,9 @@ Examples of result images on the *ASD-Pointing* dataset. The green and red color
 and not performed, respectively. The videos were captured with four Azure Kinect cameras in three living lab spaces.
 
 <!--<img src="fig_result.png" width="1000">-->
+
+## LICENSE
+Please see [LICENSE.md](../LICENSE.md).
+
+## Contact
+If you have any question or comment, please email <ch.yoo@etri.re.kr>.
