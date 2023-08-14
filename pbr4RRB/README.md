@@ -63,7 +63,9 @@ You can test our network by putting pre-trained models on checkpoints folder.
 - RRB_LA_Net_tr_countix.checkpoint : Repetition detector trained on Counitx.
 https://drive.google.com/file/d/17KD7lQ5xm9lV9zsAqtL0sz9UO4aynJ7m/view?usp=drive_link
 - RRB_RA_Net_tr_ESBD_parsing.checkpoint : Action classifier (VST) trained on parsed ESBD.
+https://drive.google.com/file/d/1scUBv1v3HSenmo4ix4LKNfVMyOJQpVP8/view?usp=drive_link
 - RRB_RA_Net_tr_SSBD_parsing.checkpoint : Action classifier (VST) trained on parsed SSBD.
+https://drive.google.com/file/d/19Vamf353wwHyerQPjOkQbJhRqX7YObhs/view?usp=drive_link
 
 
 
