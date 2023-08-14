@@ -60,7 +60,7 @@ To be uploaded
 
 We provide our pre-trained models. 
 You can test our network by putting pre-trained models on checkpoints folder.
-- RRB_LA_Net_tr_countix.checkpoint : Repetition detector trained on Counitx.
+- RRB_LA_Net_tr_countix.checkpoint <Repetition detector trained on Counitx> : 
 - RRB_RA_Net_tr_ESBD_parsing.checkpoint : Action classifier (VST) trained on parsed ESBD.
 - RRB_RA_Net_tr_SSBD_parsing.checkpoint : Action classifier (VST) trained on parsed SSBD.
 
