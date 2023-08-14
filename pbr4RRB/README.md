@@ -47,7 +47,7 @@ data
 
 - To test code, run the command below:
 ```python
-python demo_test.py 
+python demo_test.py --data_choice 'ESBD' or 'SSBD'
 ```
 
 ## Training
