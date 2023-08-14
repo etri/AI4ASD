@@ -53,7 +53,7 @@ python demo_test.py
 ## Training
 - To train code, run the command below:
 ```python
-python main.py 
+To be uploaded
 ```
 
 ## Model
