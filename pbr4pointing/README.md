@@ -58,7 +58,7 @@ python demo_livinglab.py --model_name 'model_name' --SSL ['None', 'SimSiam', 'BY
 
 ## Training
 - Prepare image file in .jpg or .png format.
-After preparing data, the data folder should be like the format below:
+After preparing data, the data folder should be like the format below (0:pointing, 1:not pointing):
 
 ```
 data
