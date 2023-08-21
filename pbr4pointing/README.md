@@ -32,9 +32,11 @@ pip install -r requirements.txt
 ```
 
 ## Test
-- To identify children among the people present in the scene we utilize OpenPose.
+To identify children among the people present in the scene we utilize OpenPose.
   
-To run test(demo) code, you need to include the lib, evaluate folder to our github after following the installation guide on following URL(https://github.com/tensorboy/pytorch_Realtime_Multi-Person_Pose_Estimation). Also, download pose_model.pth from the corresponding github and put it in the checkpoints folder.
+To run test(demo) code, you need to include the lib, evaluate folder to our github after following the installation guide on following URL(https://github.com/tensorboy/pytorch_Realtime_Multi-Person_Pose_Estimation). 
+
+Also, download pose_model.pth from the corresponding github and put it in the checkpoints folder.
 
 - Prepare recorded video file in .mkv format.
 After preparing data, the data folder should be like the format below:
