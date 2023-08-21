@@ -57,6 +57,28 @@ python demo_livinglab.py --model_name 'model_name' --SSL ['None', 'SimSiam', 'BY
 ```
 
 ## Training
+- Prepare image file in .jpg or .png format.
+After preparing data, the data folder should be like the format below:
+
+```
+data
+├─ ntu_rgbd
+│ ├─ pointing_binary    
+│ │ ├─ 0_samples_train
+│ │ | ├─ xxxx.png
+| │ │ ├─ ......
+│ │ ├─ 0_samples_val
+│ │ | ├─ xxxx.png
+| │ │ ├─ ......
+│ │ ├─ 1_samples_train
+│ │ | ├─ xxxx.png
+| │ │ ├─ ......
+│ │ ├─ 1_samples_val
+│ │ | ├─ xxxx.png
+| │ │ ├─ ......
+
+```
+
 - To train code, run the command below:
 ```python
 python main.py --model_name 'model_name' --SSL ['None', 'SimSiam', 'BYOL'] --backbone ['resnet, 'vit_B_32']
