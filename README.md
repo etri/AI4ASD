@@ -7,7 +7,7 @@ Development of psychological behavior recognition technologies for artificial in
 
 ## **Goals**
 
-Autism Spectrum Disorders(ASD) screening tool for AI(Artificial intelligence) technology
+Autism Spectrum Disorders (ASD) screening tool for AI (Artificial intelligence) technology
 -	AI engine for non-verbal communication cognition in social interaction analysis
 -	Analysis of verbal communication behavior and recognition of abnormal / homologous behaviors
 -	Interaction / inference-based ASD early screening system of multiple sensory information
