@@ -34,7 +34,8 @@ pip install -r requirements.txt
 ## Test
 To identify children among the people present in the scene we utilize OpenPose. 
 
-To run test(demo) code, you need to include additional lib, evaluate folder to our project folder after following the installation guide on following URL (https://github.com/tensorboy/pytorch_Realtime_Multi-Person_Pose_Estimation). 
+To run the test(demo) code, you need to include the additional lib, evaluation folder in our project folder after following the installation guide at the following URL.
+(https://github.com/tensorboy/pytorch_Realtime_Multi-Person_Pose_Estimation). 
 
 Also, please download pose_model.pth from the corresponding github and put it in the checkpoints folder.
 
