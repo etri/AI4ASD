@@ -96,8 +96,8 @@ python main.py --model_name 'model_name' --SSL ['None', 'SimSiam', 'BYOL'] --bac
 We provide our pre-trained models. 
 You can test our network by putting pre-trained models on checkpoints/logs/resnet50_ntu or resnet50_ntu_SimSiam/model_best.checkpoint
 
-- ResNet-50 (baseline): [https://drive.google.com/file/t/](https://drive.google.com/file/d/11Ay-PPXre0SXkWp6X4epiUwXXRo031XE/view?usp=drive_link)
-- Proposed<sub>SimSiam</sub>: https://drive.google.com/file/t/
+- ResNet-50 (baseline): https://drive.google.com/file/d/11Ay-PPXre0SXkWp6X4epiUwXXRo031XE/view?usp=drive_link
+- Proposed<sub>SimSiam</sub>: https://drive.google.com/file/d/19wmz5ve8Go62dWoKaSP_7DbCdds6l1VH/view?usp=drive_link
 
 
 
