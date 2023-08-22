@@ -2,7 +2,7 @@
 
 
 
-This repository provides the official PyTorch implementation of the following paper:
+This repository provides the official PyTorch implementation of the following paper aimed at detecting restrictive and repetitive behaviors (RRBs) :
 <img src="fig_architecture.png" width="1000">
 
 > Video-based Stereotyped Behavior Detection for Early Diagnosis of Autism Spectrum Disorder
