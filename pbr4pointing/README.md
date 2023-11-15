@@ -110,9 +110,9 @@ and not performed, respectively. The videos were captured with four Azure Kinect
 
 <--<img src="fig_result.png" width="700">-->
 
-|   Model                | Accuracy | Recall | Precision | F1-score |
-| :---------:            | :-------:| :--------: | :---------: |
-| ResNet-50 (baseline)   | 84.8     | 66.2   | 53.5      | 59.2     |
+|   Model                | Accuracy | Recall     | Precision   | F1-score    |
+| :---------:            | :-------:| :--------: | :---------: | :---------: |
+| ResNet-50 (baseline)   | 84.8     | 66.2       | 53.5        | 59.2        |
 
 
 ## LICENSE
