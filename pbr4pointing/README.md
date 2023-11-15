@@ -3,7 +3,7 @@
 
 
 This repository provides the official PyTorch implementation of the following paper:
-<img src="fig_architecture.png" width="800">
+<img src="fig_architecture.png" width="700">
 
 > Pointing Gesture Recognition via Self-supervised Regularization for ASD
 Screening 
@@ -108,7 +108,7 @@ https://drive.google.com/file/d/19wmz5ve8Go62dWoKaSP_7DbCdds6l1VH/view?usp=drive
 Examples of result images on the *ASD-Pointing* dataset. The green and red colors represent test cases where pointing is performed
 and not performed, respectively. The videos were captured with four Azure Kinect cameras in three living lab spaces.
 
-<--<img src="fig_result.png" width="1000">-->
+<--<img src="fig_result.png" width="700">-->
 
 |   Model                | Accuracy | Recall | Precision | F1-score |
 | :---------:            | :-------:| :--------: | :---------: |
