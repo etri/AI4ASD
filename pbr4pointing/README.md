@@ -1,4 +1,4 @@
-# PointDetectNet: Offcial Pytorch Implementation
+# Pointing Gesture Recognition via Self-supervised Regularization for ASD: Offcial Pytorch Implementation
 
 
 
