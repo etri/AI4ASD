@@ -1,8 +1,8 @@
 # Pointing Gesture Recognition via Self-supervised Regularization for ASD
 
+This repository is the official implementation of **[Pointing Gesture Recognition via Self-supervised Regularization for ASD]([https://arxiv.org/abs/2303.13439](https://openaccess.thecvf.com/content/ICCV2023W/ASI/html/Yoo_Pointing_Gesture_Recognition_via_Self-Supervised_Regularization_for_ASD_Screening_ICCVW_2023_paper.html))**
 
 
-This repository provides the official PyTorch implementation of the following paper:
 <img src="fig_architecture.png" width="700">
 
 > Pointing Gesture Recognition via Self-supervised Regularization for ASD
