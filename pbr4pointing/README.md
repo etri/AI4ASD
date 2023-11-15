@@ -108,7 +108,12 @@ https://drive.google.com/file/d/19wmz5ve8Go62dWoKaSP_7DbCdds6l1VH/view?usp=drive
 Examples of result images on the *ASD-Pointing* dataset. The green and red colors represent test cases where pointing is performed
 and not performed, respectively. The videos were captured with four Azure Kinect cameras in three living lab spaces.
 
-<!--<img src="fig_result.png" width="1000">-->
+<--<img src="fig_result.png" width="1000">-->
+
+|   Model                | Accuracy | Recall | Precision | F1-score |
+| :---------:            | :-------:| :--------: | :---------: |
+| ResNet-50 (baseline)   | 84.8     | 66.2   | 53.5      | 59.2     |
+
 
 ## LICENSE
 Please see [LICENSE.md](../LICENSE.md).
