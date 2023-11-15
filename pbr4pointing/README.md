@@ -108,15 +108,31 @@ https://drive.google.com/file/d/19wmz5ve8Go62dWoKaSP_7DbCdds6l1VH/view?usp=drive
 Examples of result images on the *ASD-Pointing* dataset. The green and red colors represent test cases where pointing is performed
 and not performed, respectively. The videos were captured with four Azure Kinect cameras in three living lab spaces.
 
-<--<img src="fig_result.png" width="700">-->
+<img src="fig_result.png" width="700">
 
 |   Model                | Accuracy | Recall     | Precision   | F1-score    |
 | :---------:            | :-------:| :--------: | :---------: | :---------: |
 | ResNet-50 (baseline)   | 84.8     | 66.2       | 53.5        | 59.2        |
-
+| Proposed (BYOL)        | 86.3     | 63.7       | 58.0        | 60.7        |
+| Proposed (SimSiam)     | 86.5     | 76.2       | 57.0        | 65.2        |
+| :---------:            | :-------:| :--------: | :---------: | :---------: |
+| ViT-B/32 (baseline)    | 61.9     | 98.7       | 30.3        | 46.3        |
+| Proposed (BYOL)        | 75.0     | 97.5       | 39.8        | 56.5        |
+| Proposed (SimSiam)     | 75.2     | 98.7       | 40.1        | 57.0        |
 
 ## LICENSE
 Please see [LICENSE.md](../LICENSE.md).
 
+## Citation
+If you make use of our work, please cite our paper.
+```bibtex
+@inproceedings{yoo2023pointing,
+  title={Pointing Gesture Recognition via Self-Supervised Regularization for ASD Screening},
+  author={Yoo, Cheol-Hwan and Yoo, Jang-Hee and Kim, Ho-Won and Han, ByungOk},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  pages={3036--3043},
+  year={2023}
+}
+```
 ## Contact
 If you have any question or comment, please email <ch.yoo@etri.re.kr>.
