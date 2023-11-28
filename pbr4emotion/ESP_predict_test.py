@@ -2,8 +2,8 @@
    * Source: ESP_predict_test.py
    * License: PBR License (Dual License)
    * Modified by ByungOk Han <byungok.han@etri.re.kr>
-   * Date: 21 June 2021, ETRI
-   * Copyright 2022. ETRI all rights reserved. 
+   * Date: 20 Nov. 2023, ETRI
+   * Copyright 2023. ETRI all rights reserved. 
 
 """
 

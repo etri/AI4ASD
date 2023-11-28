@@ -1,9 +1,8 @@
 """
    * Source: smoothing_filters.py
    * License: PBR License (Dual License)
-   * Created by ByungOk Han  <byungok.han@etri.re.kr> on 2022-02-18
-   * Modified: 2022-09-30 
-   * Copyright 2022. ETRI all rights reserved. 
+   * Modified by ByungOk Han  <byungok.han@etri.re.kr> on 2023-11-20
+   * Copyright 2023. ETRI all rights reserved. 
                                        
 """
 

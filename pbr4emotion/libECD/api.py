@@ -3,8 +3,8 @@
    * Source: api.py
    * License: PBR License (Dual License)
    * Created by ByungOk Han on 2022-01-27
-   * Modified by ByungOk Han <byungok.han@etri.re.kr> on 2022-09-30
-   * Copyright 2022. ETRI all rights reserved. 
+   * Modified by ByungOk Han <byungok.han@etri.re.kr> on 2023-11-20
+   * Copyright 2023. ETRI all rights reserved. 
                                        
 """
 
@@ -83,6 +83,8 @@ parser.add_argument('--video_length', default=0.0, type=float, metavar='f',
                     help='video length control paramter. if 0.1 is used, video length is 0.2')
 parser.add_argument('--no_softmax', action='store_true',
                     help='softmax remove')
+parser.add_argument('--ref_signal', default = None , type=int, metavar = 'i',
+                    help = 'ref_signal')
 
 
 args = parser.parse_args()
@@ -300,6 +302,10 @@ def PBR_ESP_detect_change(video_filename):
         results = results[:-1]
         indices = indices[:-1]
 
+    if args.ref_signal != None:
+        post_processed_result = post_processing(ref_signal, indices, time_stamps)
+        results[0] = post_processed_result
+
     #print('## [Detected change points] ', results)                  
 
     if args.visualize:
@@ -311,6 +317,26 @@ def PBR_ESP_detect_change(video_filename):
         plt.show()
 
     return results, indices
+
+
+def post_processing(signal, indices, time_stamps):
+
+    gradient_signal = np.diff(signal, axis=0)
+    jump_interval = 5
+
+    onset_index = indices[0]
+    print(onset_index)
+    while True:
+        if ((gradient_signal[onset_index] > 0) and (gradient_signal[onset_index - jump_interval] > 0)) or ((gradient_signal[onset_index] < 0) and (gradient_signal[onset_index - jump_interval] < 0)):
+            if onset_index - jump_interval >= 0:
+                onset_index = onset_index-jump_interval
+            else:
+                break
+        else:
+            break
+    print('post_processed: ', onset_index)
+
+    return time_stamps[onset_index]
 
 
 def adjust_region_in_image(img, left, top, right, bottom):
