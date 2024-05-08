@@ -19,6 +19,7 @@ Screening
 
 ## Updates
 07/10/2023: Project page built
+08/05/2024: Code update - removing depth dependency
 
 All code related to this work will be made available. 
 
@@ -59,29 +60,32 @@ python main.py --model_name 'model_name' --SSL ['None', 'SimSiam', 'BYOL'] --bac
 ```
 
 ## Test
-To identify children among the people present in the scene we utilize OpenPose. 
+<!--To identify children among the people present in the scene we utilize OpenPose. 
 
 To run the test(demo) code, you need to include the additional *lib* and *evaluate* folder in our project folder after following the installation guide at the following URL.
 (https://github.com/tensorboy/pytorch_Realtime_Multi-Person_Pose_Estimation). 
 
-Also, please download pose_model.pth from the corresponding github and put it in the checkpoints folder.
+Also, please download pose_model.pth from the corresponding github and put it in the checkpoints folder.-->
 
-- Prepare recorded video file in .mkv format.
+To identify children among the people present in the scene and detect hand region, we utlize YOLO-World and MediaPipe.
+
+To run the test(demo) code, you need to download child_adult_yolow.onnx from the link() and put it in the checkpoints folder.
+
+- Prepare recorded video file in .mp4 or .avi format.
 After preparing data, the data folder should be like the format below:
 
 ```
 living_lab_db
-├─ contents
-│ ├─ pointing_negative    
-│ │ ├─ subject_nmae
-│ │ | ├─ xxxx.mkv
-│ │ ├─ ......
-│ │
-│ ├─ pointing_positive    
-│ │ ├─ subject_nmae
-│ │ | ├─ xxxx.mkv
-│ │ ├─ ......
-│ │
+├─ pointing_negative    
+│ ├─ subject_nmae
+│ | ├─ xxxx.mp4
+│ ├─ ......
+│
+├─ pointing_positive    
+│ ├─ subject_nmae
+│ | ├─ xxxx.mp4
+│ ├─ ......
+│
 
 ```
 
