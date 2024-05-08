@@ -78,12 +78,12 @@ After preparing data, the data folder should be like the format below:
 ```
 living_lab_db
 ├─ pointing_negative    
-│ ├─ subject_nmae
+│ ├─ subject_name
 │ | ├─ xxxx.mp4
 │ ├─ ......
 │
 ├─ pointing_positive    
-│ ├─ subject_nmae
+│ ├─ subject_name
 │ | ├─ xxxx.mp4
 │ ├─ ......
 │
