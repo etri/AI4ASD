@@ -70,7 +70,7 @@ Also, please download pose_model.pth from the corresponding github and put it in
 
 To identify children among the people present in the scene and detect hand region, we utlize YOLO-World and MediaPipe.
 
-To run the test(demo) code, you need to download child_adult_yolow.onnx from the link(https://drive.google.com/file/d/1gLLPwWOaH6bwVN091Gat_d8vRaH63fBw/view?usp=drive_link) and put it in the checkpoints folder.
+To run the test(demo) code, you need to download YOLO-World model(child_adult_yolow.onnx) from the link(https://drive.google.com/file/d/1gLLPwWOaH6bwVN091Gat_d8vRaH63fBw/view?usp=drive_link) and put it in the checkpoints folder.
 
 - Prepare recorded video file in .mp4 or .avi format.
 After preparing data, the data folder should be like the format below:
