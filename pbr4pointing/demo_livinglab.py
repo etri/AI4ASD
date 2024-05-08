@@ -1,6 +1,6 @@
 """
    * Source: demo_livinglab.py
-   * License: PBR4AI License (Dual License)
+   * License: PBR License (Dual License)
    * Modified by Cheol-Hwan Yoo <ch.yoo@etri.re.kr>
    * Date: 21 Aug. 2023, ETRI
    * Copyright 2023. ETRI all rights reserved.
@@ -8,19 +8,17 @@
 
 import os
 os.environ["CUDA_VISIBLE_DEVICES"] = '0'
-import copy
 import torchvision.transforms as transforms
+import mediapipe as mp
+import onnxruntime as ort
 
 from argparse import ArgumentParser
-from lib.network.rtpose_vgg import get_model
-from lib.config import cfg
-from lib.utils.paf_to_pose import paf_to_pose_cpp
-from evaluate.coco_eval import get_outputs_openpose
-from pyk4a import PyK4APlayback
 from tqdm import tqdm
 from utility import *
 from PIL import Image
 from model.model import build_net
+from typing import Tuple, Union
+from torchvision.ops import nms
 
 eps = 1e-7
 IMAGENET_DEFAULT_MEAN = np.array([0.485, 0.456, 0.406])
@@ -33,6 +31,9 @@ tf_Resize = transforms.Resize((224, 224))
 tf_ToTensor = transforms.ToTensor()
 tf_Normalize = transforms.Normalize(mean=IMAGENET_DEFAULT_MEAN, std=IMAGENET_DEFAULT_STD)
 
+# mediapipe (do not change)
+_PRESENCE_THRESHOLD = 0.5
+_VISIBILITY_THRESHOLD = 0.5
 
 def parse_args():
 
@@ -41,7 +42,6 @@ def parse_args():
     Note: function for user parameter setting
 
     """
-
     parser = ArgumentParser()
     parser.add_argument('--device', default='cuda:0', help='Device used for inference')
 
@@ -57,20 +57,19 @@ def parse_args():
         default=False,
         help='whether to visualize skeleton.')
 
-    parser.add_argument(
-        '--input',
-        type=str,
-        default='mkv',
-        help='live or saved video',
-        choices=['mkv', 'kinect', 'webcam'])
+    # Parameters (yolo-world)
+    parser.add_argument('--iou_threshold', help='iou_threshold for NMS', default=0.6)
+    parser.add_argument('--confidence_threshold', help='confidence_threshold', default=0.2)  # 0.05
+
+    # Parameters (mediapipe)
+    parser.add_argument('--static_image_mode', type=str, default=False)
+    parser.add_argument('--max_num_hands', type=int, default=6)
+    parser.add_argument('--model_complexity', type=int, default=0)
+    parser.add_argument('--min_detection_confidence', type=float, default=0.3)  # 0.5
+    parser.add_argument('--min_tracking_confidence', type=float, default=0.5)
 
     # User parameters (thresholds)
-    parser.add_argument('--k_val', type=float, default=1.5)
-    parser.add_argument('--box_half_len', type=int, default=70)
     parser.add_argument('--positive_persist_thres', type=int, default=2)  # 5
-    parser.add_argument('--dist_thres', type=int, default=2000)
-    parser.add_argument('--detect_hand', type=str, default='openpose', choices=['rcnn', 'openpose'])
-    parser.add_argument('--select_person', type=str, default='min_bone', choices=['min_bone', 'nearest'])
     parser.add_argument('--showFps', type=bool, default=False)
     parser.add_argument('--viz_scale', type=int, default=1.0)
     parser.add_argument('--model_name', type=str, default='resnet50_ntu_SimSiam')
@@ -81,61 +80,73 @@ def parse_args():
     return parser.parse_args()
 
 
+def _normalized_to_pixel_coordinates(
+    normalized_x: float, normalized_y: float, image_width: int,
+    image_height: int) -> Union[None, Tuple[int, int]]:
+  """Converts normalized value pair to pixel coordinates."""
+
+  # Checks if the float value is between 0 and 1.
+  def is_valid_normalized_value(value: float) -> bool:
+    return (value > 0 or math.isclose(0, value)) and (value < 1 or
+                                                      math.isclose(1, value))
+
+  if not (is_valid_normalized_value(normalized_x) and
+          is_valid_normalized_value(normalized_y)):
+    return None
+  x_px = min(math.floor(normalized_x * image_width), image_width - 1)
+  y_px = min(math.floor(normalized_y * image_height), image_height - 1)
+  return x_px, y_px
+
+
 if __name__ == '__main__':
 
     args = parse_args()
     print("The configuration of this run is:")
     print(args, end='\n\n')
 
-    if args.input == 'mkv':
-        base_dir_pos = 'living_lab_db/contents/pointing_positive/'
-        folder_list_pos = os.listdir(base_dir_pos)
-        input_list_pos = []
-        labels_pos = []
-        labels = []
+    base_dir_pos = 'living_lab_db/pointing_positive/'
+    folder_list_pos = os.listdir(base_dir_pos)
+    input_list_pos = []
+    labels_pos = []
+    labels = []
 
-        for i in range(len(folder_list_pos)):
-            file_dir = base_dir_pos + folder_list_pos[i] + '/08/rec/'
-            input_list_pos += [os.path.join(file_dir, f) for f in sorted(os.listdir(file_dir)) if
-                               f.split(".")[-1] == "mkv"]
-        labels_pos = [0] * len(input_list_pos)
+    for i in range(len(folder_list_pos)):
+        file_dir = base_dir_pos + folder_list_pos[i]
+        input_list_pos += [os.path.join(file_dir, f) for f in sorted(os.listdir(file_dir)) if
+                           f.split(".")[-1] == "mp4" or f.split(".")[-1] == "avi" or f.split(".")[-1] == "mkv"]
+    labels_pos = [0] * len(input_list_pos)
 
-        base_dir_neg = 'living_lab_db/contents/pointing_negative/'
-        folder_list_neg = os.listdir(base_dir_neg)
-        input_list_neg = []
-        labels_neg = []
+    base_dir_neg = 'living_lab_db/pointing_negative/'
+    folder_list_neg = os.listdir(base_dir_neg)
+    input_list_neg = []
+    labels_neg = []
 
-        for i in range(len(folder_list_neg)):
-            file_dir = base_dir_neg + folder_list_neg[i] + '/08/rec/'
-            input_list_neg += [os.path.join(file_dir, f) for f in sorted(os.listdir(file_dir)) if
-                               f.split(".")[-1] == "mkv"]
-        labels_neg = [1] * len(input_list_neg)
+    for i in range(len(folder_list_neg)):
+        file_dir = base_dir_neg + folder_list_neg[i]
+        input_list_neg += [os.path.join(file_dir, f) for f in sorted(os.listdir(file_dir)) if
+                           f.split(".")[-1] == "mp4" or f.split(".")[-1] == "avi" or f.split(".")[-1] == "mkv"]
+    labels_neg = [1] * len(input_list_neg)
 
-        input_list = input_list_pos + input_list_neg
-        labels = labels_pos + labels_neg
+    input_list = input_list_pos + input_list_neg
+    labels = labels_pos + labels_neg
 
-        # camera configuration
-        camera_param = {
-            'fx': 964.9,
-            'fy': 963.6,
-            'cx': 1024.4,
-            'cy': 779.7
-        }
+    # load body detect model (yolo-world)
+    model_bodycrop = ort.InferenceSession('checkpoints/child_adult_yolow.onnx', providers=['CUDAExecutionProvider'])
+    print('Loading bodycrop model(yolo-world) done...')
 
-        fx = camera_param['fx']
-        fy = camera_param['fy']
-        cx = camera_param['cx']
-        cy = camera_param['cy']
-        BOX_HALF_LEN = args.box_half_len
-        k_val = args.k_val
+    # load hand detect model (mediapipe)
+    mp_drawing = mp.solutions.drawing_utils
+    mp_drawing_styles = mp.solutions.drawing_styles
+    mp_hands = mp.solutions.hands
 
-    # Load OpenPose
-    model_oepnpose = get_model('vgg19')
-    model_oepnpose.load_state_dict(torch.load('checkpoints/pose_model.pth'))
-    model_oepnpose.cuda()
-    model_oepnpose.float()
-    model_oepnpose.eval()
-    print('loading openpose done...')
+    hands = mp_hands.Hands(
+        args.static_image_mode,
+        args.max_num_hands,
+        args.model_complexity,
+        args.min_detection_confidence,
+        args.min_tracking_confidence)
+
+    print('loading mediapipe hand model done...')
 
     ## model(handNet) ##
     model_PointDetNet = build_net(args)
@@ -190,132 +201,171 @@ if __name__ == '__main__':
         prob_hand = 0
         fr_idx = 0
 
-        if args.input == 'mkv':
-            playback = PyK4APlayback(input_list[idx_list])
-            playback.open()
+        cap = cv2.VideoCapture(input_list[idx_list])  # 0, 2
 
         while True:
             try:
                 last_time = time.time()
 
-                capture = playback.get_next_capture()
+                flag, img = cap.read()
+                if not flag:
+                    break
 
-                if capture.color is not None and capture.depth is not None:
-                    img = cv2.imdecode(capture.color, cv2.IMREAD_COLOR)
-                    depth = capture.transformed_depth
-                else:
-                    continue
-
-                img_copy = copy.deepcopy(img)
-                center_pt3_2d = (0, 0)
+                img_copy = img.copy()
+                image_h, image_w = img.shape[:2]
 
                 with torch.no_grad():
 
-                    ## Openpose part
-                    paf, heatmap, imscale = get_outputs_openpose(
-                        img_copy, model_oepnpose, 'rtpose')
-
-                    humans = paf_to_pose_cpp(heatmap, paf, cfg)
-
-                    # generate detection result
-                    image_h, image_w = img.shape[:2]
                     hand_bbox_results = []
+                    scale = 640.0 / max(image_w, image_h)
+                    new_width = int(image_w * scale)
+                    new_height = int(image_h * scale)
 
-                    dist_min = 1e20
-                    baby_idx = None
+                    # image resizing
+                    resized_image = cv2.resize(img_copy, (new_width, new_height))
 
-                    if args.select_person == 'min_bone':
-                        for i in range(len(humans)):
-                            if 0 in humans[i].body_parts.keys() and 2 in humans[i].body_parts.keys() and 5 in humans[
-                                i].body_parts.keys():
+                    # Zero padding 
+                    if new_width > new_height:
+                        top = 0
+                        bottom = (640 - new_height)
+                        left = right = 0
+                    else:
+                        top = bottom = 0
+                        left = right = (640 - new_width) // 2
 
-                                x_scale = int(humans[i].body_parts[2].x * image_w + 0.5)
-                                y_scale = int(humans[i].body_parts[2].y * image_h + 0.5)
-                                pt_idx_0 = transform_2d_to_3d(depth, x_scale, y_scale, camera_param)
+                    # add padding to image
+                    padded_image = cv2.copyMakeBorder(resized_image, top, bottom, left, right, cv2.BORDER_CONSTANT,
+                                                      value=[0, 0, 0])
+                    input_data = padded_image.astype('float32') / 255
 
-                                x_scale = int(humans[i].body_parts[5].x * image_w + 0.5)
-                                y_scale = int(humans[i].body_parts[5].y * image_h + 0.5)
-                                pt_idx_1 = transform_2d_to_3d(depth, x_scale, y_scale, camera_param)
+                    input_data = np.expand_dims(input_data, axis=0)
+                    input_data = np.transpose(input_data, (0, 3, 1, 2))
 
-                                if pt_idx_0[2] > args.dist_thres:
-                                    continue
+                    ########################################################################
+                    ############################# Inference ################################
+                    ########################################################################
+                    input_name = model_bodycrop.get_inputs()[0].name
+                    output_names = [output.name for output in model_bodycrop.get_outputs()]
 
-                                dist = cal_dist(pt_idx_0, pt_idx_1)
+                    result = model_bodycrop.run(output_names, {input_name: input_data})
+                    ## box coords rescale
+                    result[1][0][:-1][:, [0, 2]] = result[1][0][:-1][:, [0, 2]] / (scale * image_w)
+                    result[1][0][:-1][:, [1, 3]] = result[1][0][:-1][:, [1, 3]] / (scale * image_h)
 
-                                if dist <= dist_min:
-                                    dist_min = dist
-                                    baby_idx = i
+                    boxes = torch.Tensor(result[1][0][:-1])
+                    logits = torch.Tensor(result[2][0][:-1])
+                    phrases = torch.Tensor(result[3][0][:-1])
 
-                    elif args.select_person == 'nearest':
-                        for i in range(len(humans)):
-                            if 0 in humans[i].body_parts.keys():
+                    ########################################################################
+                    ###################### Non-Maximum Suppression #########################
+                    ########################################################################
+                    IOU_THRESHOLD = args.iou_threshold
+                    nms_idx = nms(torch.cat((boxes[:, :2], boxes[:, 2:]), dim=1), logits,
+                                  IOU_THRESHOLD).numpy().tolist()  ## yolo-world ver.
+                    boxes = boxes[nms_idx]
+                    logits = logits[nms_idx]
+                    phrases = phrases[nms_idx]
 
-                                x_scale = int(humans[i].body_parts[0].x * image_w + 0.5)
-                                y_scale = int(humans[i].body_parts[0].y * image_h + 0.5)
-                                dist = depth[y_scale, x_scale]
+                    ########################################################################
+                    ####################### Confidence Thresholding ########################
+                    ########################################################################
+                    CONFIDENCE_THRESHOLD = args.confidence_threshold
+                    boxes = boxes[logits > CONFIDENCE_THRESHOLD]
+                    phrases = phrases[logits > CONFIDENCE_THRESHOLD]
+                    logits = logits[logits > CONFIDENCE_THRESHOLD]
 
-                                if dist == 0 or dist > args.dist_thres:
-                                    continue
+                    boxes = boxes * torch.Tensor([image_w, image_h, image_w, image_h])
 
-                                if dist <= dist_min:
-                                    dist_min = dist
-                                    baby_idx = i
+                    # Filter logits based on phrases
+                    logits_filtered = logits[phrases == 0]  ## 0: child, 1: adult
 
-                    img = np.ascontiguousarray(img, dtype=np.uint8)
+                    if logits_filtered.numel() > 0:
+                        # Find the index of the maximum value in the filtered logits
+                        max_idx = torch.argmax(logits_filtered)
 
-                    Coco_class_num = 18
+                        # Retrieve the corresponding box using the index
+                        max_box = boxes[phrases == 0][max_idx]
+                        pt1 = (int(max_box[0]), int(max_box[1]))
+                        pt2 = (int(max_box[2]), int(max_box[3]))
 
-                    for idx, human in enumerate(humans):
-                        # draw point
+                        box_width = pt2[0] - pt1[0]
+                        box_height = pt2[1] - pt1[1]
 
-                        if idx == baby_idx: 
-                            for i in range(Coco_class_num):
 
-                                if i not in humans[baby_idx].body_parts.keys():
-                                    continue
-                                if i == 4 or i == 7:
+                        bbox_margin_w = int(box_width / 8.0)  # add margin to box x1.5 (4.0)
+                        bbox_margin_h = 0  # int(box_height / 8.0)  # add margin to box x1.5 (4.0)
 
-                                    pre_idx = i - 1 
+                        bbox_xmin = max(int(pt1[0] - bbox_margin_w), 0)
+                        bbox_ymin = max(int(pt1[1] - bbox_margin_h), 0)
+                        bbox_xmax = min(int(pt2[0] + bbox_margin_w), image_w - 1)
+                        bbox_ymax = min(int(pt2[1] + bbox_margin_h), image_h - 1)
 
-                                    if pre_idx in human.body_parts.keys():
+                        pt1 = (bbox_xmin, bbox_ymin)
+                        pt2 = (bbox_xmax, bbox_ymax)
 
-                                        body_part_pre = human.body_parts[i - 1]
-                                        body_part = human.body_parts[i]
+                        cv2.rectangle(img, pt1, pt2, (255, 0, 255), 2)
+                        cv2.putText(img, 'child', (pt1[0], pt1[1] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9,
+                                    (255, 0, 255), 2)
+                        cv2.putText(img, str(int(logits_filtered[max_idx].numpy() * 1000) / 10.0),
+                                    (pt1[0] + 80, pt1[1] - 10),
+                                    cv2.FONT_HERSHEY_SIMPLEX, 0.9, (255, 0, 255), 2)
 
-                                        # 3d bbox detection
-                                        pre_x_scale = int(body_part_pre.x * image_w + 0.5)
-                                        pre_y_scale = int(body_part_pre.y * image_h + 0.5)
-                                        x_scale = int(body_part.x * image_w + 0.5)
-                                        y_scale = int(body_part.y * image_h + 0.5)
+                        img_croppped = img_copy[bbox_ymin:bbox_ymax, bbox_xmin:bbox_xmax, :]
 
-                                        center_pt1 = transform_2d_to_3d(depth, pre_x_scale, pre_y_scale, camera_param)
-                                        center_pt2 = transform_2d_to_3d(depth, x_scale, y_scale, camera_param)
+                        # To improve performance, optionally mark the image as not writeable to
+                        # pass by reference.
+                        img_croppped.flags.writeable = False
+                        img_croppped = cv2.cvtColor(img_croppped, cv2.COLOR_BGR2RGB)
 
-                                        grad = (center_pt2[0] - center_pt1[0], center_pt2[1] - center_pt1[1],
-                                                center_pt2[2] - center_pt1[2])
+                        results = hands.process(img_croppped)
 
-                                        # co-linearity
-                                        center_pt3 = (center_pt1[0] + k_val * grad[0], center_pt1[1] + k_val * grad[1],
-                                                      center_pt1[2] + k_val * grad[2])
+                        # Draw the hand annotations on the image.
+                        img_croppped.flags.writeable = True
+                        img_croppped = cv2.cvtColor(img_croppped, cv2.COLOR_RGB2BGR)
 
-                                        if center_pt1[2] <= 0 or center_pt2[2] <= 0 or center_pt3[2] <= 0:
-                                            continue
-                                            
-                                        Xmin = center_pt3[0] - BOX_HALF_LEN
-                                        Xmax = center_pt3[0] + BOX_HALF_LEN
-                                        Ymin = center_pt3[1] - BOX_HALF_LEN
-                                        Ymax = center_pt3[1] + BOX_HALF_LEN
-                                        Zmin = center_pt3[2] - BOX_HALF_LEN
-                                        Zmax = center_pt3[2] + BOX_HALF_LEN
+                        image_h_cropped, image_w_cropped = img_croppped.shape[:2]
 
-                                        xmin = fx * Xmin / center_pt3[2] + cx
-                                        xmax = fx * Xmax / center_pt3[2] + cx
-                                        ymin = fy * Ymin / center_pt3[2] + cy
-                                        ymax = fy * Ymax / center_pt3[2] + cy
-                                        xmin = np.clip(xmin, 0, image_w)
+                        if results.multi_hand_landmarks:
+                            for hand_landmarks in results.multi_hand_landmarks:
+                                mp_drawing.draw_landmarks(
+                                    img_croppped,
+                                    hand_landmarks,
+                                    mp_hands.HAND_CONNECTIONS,
+                                    mp_drawing_styles.get_default_hand_landmarks_style(),
+                                    mp_drawing_styles.get_default_hand_connections_style())
 
-                                        box_arr_hand = np.array([xmin, ymin, xmax, ymax, 0.99])
-                                        hand_bbox_results.append({'bbox': box_arr_hand})
+                                x_list = []
+                                y_list = []
+                                for idx, landmark in enumerate(hand_landmarks.landmark):
+                                    if ((landmark.HasField('visibility') and
+                                         landmark.visibility < _VISIBILITY_THRESHOLD) or
+                                            (landmark.HasField('presence') and
+                                             landmark.presence < _PRESENCE_THRESHOLD)):
+                                        continue
+
+                                    landmark_pixel = _normalized_to_pixel_coordinates(landmark.x, landmark.y,
+                                                                                      image_w_cropped, image_h_cropped)
+
+                                    if landmark_pixel is not None:
+                                        x_list.append(landmark_pixel[0])
+                                        y_list.append(landmark_pixel[1])
+                                    else:
+                                        continue
+
+                                # Calculate bounding box dimensions
+                                bbox_width = max(int(max(x_list)) - int(min(x_list)),
+                                                 int(max(y_list)) - int(min(y_list)))
+                                bbox_height = bbox_width  # Ensure square bounding box
+
+                                # Calculate bounding box coordinates
+                                xmin = max(int(min(x_list)) - 30, 0) + bbox_xmin  # -20
+                                xmax = min(int(min(x_list)) + bbox_width + 30, image_w_cropped - 1) + bbox_xmin
+                                ymin = max(int(min(y_list)) - 30, 0) + bbox_ymin
+                                ymax = min(int(min(y_list)) + bbox_height + 30, image_h_cropped - 1) + bbox_ymin
+                                box_arr_hand = np.array([xmin, ymin, xmax, ymax, 0.99])
+                                hand_bbox_results.append({'bbox': box_arr_hand})
+
+                        img[bbox_ymin:bbox_ymax, bbox_xmin:bbox_xmax,:] = img_croppped  # insert img_cropped with hand results to img canvas
 
                     preds_list = []
                     prob_hand_list = []
@@ -475,9 +525,6 @@ if __name__ == '__main__':
                 FN = FN + 1
 
         ndata += 1
-
-        if args.input == 'mkv':
-            playback.close()
 
         if args.show:
             cv2.destroyAllWindows()
