@@ -77,7 +77,7 @@ if __name__ == '__main__':
     preprocess = None
 
     model_RepDetector = RepDetectNet_3D_base_s2(args)
-    state_dict = torch.load('checkpoints/0628_RepDetectNet_base_s2.checkpoint')
+    state_dict = torch.load('checkpoints/RRB_LA_Net_tr_countix.checkpoint')
     model_RepDetector.load_state_dict(state_dict)
     model_RepDetector.cuda()
     model_RepDetector.train(True)
@@ -92,7 +92,7 @@ if __name__ == '__main__':
         action_cls_dict = {'ArmFlapping': 0, 'Spinning': 1, 'HeadBanging': 2}
         action_cls = ['ArmFlapping', 'Spinning', 'HeadBanging']
         #action_cls = ['ArmFlapping', 'Spinning', 'HeadBanging', 'ToyPlaying', 'Jumping', 'etc']
-        state_dict = torch.load('checkpoints/0703_ESBD_parsing_VST_temporal_aug_data_all.checkpoint')
+        state_dict = torch.load('checkpoints/RRB_RA_Net_tr_ESBD_parsing.checkpoint')
 
     elif args.data_choice == 'ESBD':
         ## 3-class 분류기 trained on SSBD(arm flapping, spinning, headbanging)
@@ -100,7 +100,7 @@ if __name__ == '__main__':
         action_cls_dict = {'ArmFlapping': 0, 'Spinning': 1, 'HeadBanging': 2}
         action_cls = ['ArmFlapping', 'Spinning', 'HeadBanging']
         #action_cls = ['ArmFlapping', 'Spinning', 'HeadBanging', 'ToyPlaying', 'Jumping', 'etc']
-        state_dict = torch.load('checkpoints/0703_SSBD_parsing_VST_temporal_aug_data_all.checkpoint')
+        state_dict = torch.load('checkpoints/RRB_RA_Net_tr_SSBD_parsing.checkpoint)
 
 
     model_RePNet.load_state_dict(state_dict)
