@@ -19,6 +19,7 @@ This repository provides the official PyTorch implementation of the following **
 
 ## Updates
 22/04/2024: Project page built
+>
 15/11/2024: Project v1.2 update
 
 All code and datasets related to this work will be made available. 
