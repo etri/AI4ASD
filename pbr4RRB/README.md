@@ -1,20 +1,26 @@
-# RRBNet: Offcial Pytorch Implementation
+# A Unified Approach to Stereotyped Behavior Detection for Screening Autism Spectrum Disorder - Official-Pytorch-Implementation
 
-
-
-This repository provides the official PyTorch implementation of the following paper aimed at detecting restrictive and repetitive behaviors (RRBs) :
 <img src="fig_architecture.png" width="1000">
 
-> Video-based Stereotyped Behavior Detection for Early Diagnosis of Autism Spectrum Disorder
+
+This repository provides the official PyTorch implementation of the following **[paper](https://www.sciencedirect.com/science/article/pii/S0167865524002897)**
+
+
+> A Unified Approach to Stereotyped Behavior Detection for Screening Autism Spectrum Disorder
 >
-> Abstract: -
+> Cheol-Hwan Yoo, Jang-Hee Yoo, Moon-Ki Back, Woo-Jin Wang, Yong-Goo Shin*
+>
+> Pattern Recognition Letters 2024 
+>
+>
+> Abstract: We propose a unified pipeline for the task of stereotyped behaviors detection for early diagnosis of Autism Spectrum Disorder (ASD). Current methods for analyzing autism-related behaviors of ASD children primarily focus on action classification tasks utilizing pre-trimmed video segments, limiting their real-world applicability. To overcome these challenges, we develop a two-stage network for detecting stereotyped behaviors: one for temporally localizing repetitive actions and another for classifying behavioral types. Specifically, building on the observation that stereotyped behaviors commonly manifest in various repetitive forms, our method proposes an approach to localize video segments where arbitrary repetitive behaviors are observed. Subsequently, we classify the detailed types of behaviors within these localized segments, identifying actions such as arm flapping, head banging, and spinning. Extensive experimental results on SSBD and ESBD datasets demonstrate that our proposed pipeline surpasses existing baseline methods, achieving a classification accuracy of 88.3% and 88.6%, respectively.
 
 ---
 
 ## Updates
-08/04/2023: Project page built
+22/04/2024: Project page built
 
-All code related to this work will be made available. 
+All code and datasets related to this work will be made available. 
 
 ## Get Started
 - Clone this repo and install dependencies:
