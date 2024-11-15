@@ -34,11 +34,12 @@ pip install -r requirements.txt
 ```
 
 ## Training
-- Firstly, prepare download video file (SSBD, ESBD, Countix, ...).
+- Firstly, download video file (SSBD, ESBD, Countix, ...).
 - To download and parse datasets, run the command below:
 ```python
 python data/download_video_from_URL_SSBD_ESBD.py
-python data/parse_SSBD(ESBD)_dataset.py
+python data/parse_SSBD_dataset.py
+python data/parse_ESBD_dataset.py
 python data/download_video_from_URL_countix.py
 python data/parse_countix_dataset.py
 ```
@@ -46,7 +47,7 @@ python data/parse_countix_dataset.py
 - To train code, run the command below:
 ```python
 python main_classifier.py
-python madin_repdetector.py
+python main_repdetector.py
 ```
 
 ## Test
