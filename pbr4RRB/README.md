@@ -19,6 +19,7 @@ This repository provides the official PyTorch implementation of the following **
 
 ## Updates
 22/04/2024: Project page built
+15/11/2024: Project v1.2 update
 
 All code and datasets related to this work will be made available. 
 
@@ -31,36 +32,29 @@ cd pbr4RRB
 pip install -r requirements.txt
 ```
 
+## Training
+- Firstly, prepare download video file (SSBD, ESBD, Countix, ...).
+- To download and parse datasets, run the command below:
+```python
+python data/download_video_from_URL_SSBD_ESBD.py
+python data/parse_SSBD(ESBD)_dataset.py
+python data/download_video_from_URL_countix.py
+python data/parse_countix_dataset.py
+```
+
+- To train code, run the command below:
+```python
+python main_classifier.py
+python madin_repdetector.py
+```
+
 ## Test
-- Prepare download video file (SSBD and ESBD).
-After preparing data, the data folder should be like the format below:
-
-```
-data
-├─ video
-│ ├─ ESBD    
-│ │ ├─ Dataset
-│ │ | ├─ ArmFlapping
-│ │ | ├─ ArmFlapping_per_frame_periodicity
-│ │ | ├─ ......
-│ ├─ SSBD    
-│ │ ├─ Dataset
-│ │ | ├─ ArmFlapping
-│ │ | ├─ ArmFlapping_per_frame_periodicity
-│ │ | ├─ ......
-
-```
 
 - To test code, run the command below:
 ```python
-python demo_test.py --data_choice 'ESBD' or 'SSBD'
+python demo.py --data_choice 'ESBD' or 'SSBD'
 ```
 
-## Training
-- To train code, run the command below:
-```python
-To be uploaded
-```
 
 ## Model
 
@@ -81,6 +75,8 @@ Examples of result images on the *SSBD* and *ESBD* dataset.
 The green and red colors denote whether a frame belongs to a repetitive segment or not, respectively.
 
 <img src="fig_result.png" width="1000">
+
+
 
 ## LICENSE
 Please see [LICENSE.md](../LICENSE.md).
