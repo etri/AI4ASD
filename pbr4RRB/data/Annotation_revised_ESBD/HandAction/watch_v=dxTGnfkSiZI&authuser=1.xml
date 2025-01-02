@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<video>
+   <behaviours>
+      <behaviour>		
+         <time>17:24</time>		
+         <category>handaction</category>		
+      </behaviour>
+      <behaviour>		
+         <time>26:37</time>		
+         <category>handaction</category>		
+      </behaviour>
+      <behaviour>		
+         <time>39:45</time>		
+         <category>handaction</category>		
+      </behaviour>
+      <behaviour>		
+         <time>53:56</time>		
+         <category>handaction</category>		
+      </behaviour>
+      <behaviour>		
+         <time>106:107</time>		
+         <category>handaction</category>		
+      </behaviour>
+   </behaviours>
+</video>

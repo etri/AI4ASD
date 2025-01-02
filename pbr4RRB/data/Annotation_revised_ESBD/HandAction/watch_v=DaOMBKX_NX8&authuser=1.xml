@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<video>
+   <behaviours>
+      <behaviour>		
+         <time>1:4</time>		
+         <category>handaction</category>		
+      </behaviour>
+      <behaviour>		
+         <time>5:7</time>		
+         <category>handaction</category>		
+      </behaviour>
+      <behaviour>		
+         <time>9:12</time>		
+         <category>handaction</category>		
+      </behaviour>
+      <behaviour>		
+         <time>14:17</time>		
+         <category>handaction</category>		
+      </behaviour>
+      <behaviour>		
+         <time>21:24</time>		
+         <category>handaction</category>		
+      </behaviour>
+      <behaviour>		
+         <time>28:29</time>		
+         <category>handaction</category>		
+      </behaviour>
+      <behaviour>		
+         <time>30:33</time>		
+         <category>handaction</category>		
+      </behaviour>
+      <behaviour>		
+         <time>34:42</time>		
+         <category>handaction</category>		
+      </behaviour>
+      <behaviour>		
+         <time>45:58</time>		
+         <category>handaction</category>		
+      </behaviour>
+      <behaviour>		
+         <time>101:112</time>		
+         <category>handaction</category>		
+      </behaviour>
+   </behaviours>
+</video>

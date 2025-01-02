@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<video>
+   <behaviours>
+      <behaviour>		
+         <time>0:4</time>		
+         <category>jumping</category>		
+      </behaviour>
+      <behaviour>		
+         <time>35:36</time>		
+         <category>handaction</category>		
+      </behaviour>
+      <behaviour>		
+         <time>38:39</time>		
+         <category>jumping</category>		
+      </behaviour>
+      <behaviour>		
+         <time>39:41</time>		
+         <category>handaction</category>		
+      </behaviour>
+      <behaviour>		
+         <time>101:104</time>		
+         <category>handaction</category>		
+      </behaviour>
+      <behaviour>		
+         <time>106:122</time>		
+         <category>jumping</category>		
+      </behaviour>
+      <behaviour>		
+         <time>123:126</time>		
+         <category>jumping</category>		
+      </behaviour>
+      <behaviour>		
+         <time>123:126</time>		
+         <category>handaction</category>		
+      </behaviour>
+      <behaviour>		
+         <time>129:130</time>		
+         <category>handaction</category>		
+      </behaviour>
+   </behaviours>
+</video>
