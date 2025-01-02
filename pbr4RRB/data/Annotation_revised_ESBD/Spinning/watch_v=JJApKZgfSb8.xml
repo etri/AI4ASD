@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<video>
+   <behaviours>
+      <behaviour>		
+         <time>0:5</time>		
+         <category>spinning</category>		
+      </behaviour>
+      <behaviour>		
+         <time>6:10</time>		
+         <category>spinning</category>		
+      </behaviour>
+   </behaviours>
+</video>
