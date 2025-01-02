@@ -8,7 +8,7 @@ action_cls_mapping ={'armflapping':'ArmFlapping', 'spinning':'Spinning', 'headba
 cls_idx_mapping = {'ArmFlapping':1, 'Spinning':2, 'HeadBanging':3, 'ToyPlaying':4, 'Jumping':5, 'HandAction':1, 'etc':6}
 
 file_dir = '/home/ych/data/ESBD/Dataset/'
-gt_dir = '/home/ych/data/ESBD/Annotations_revised_ych/'
+gt_dir = 'Annotations_revised_ESBD/'
 sub_folder_list = os.listdir(gt_dir)
 gt_list = []
 
