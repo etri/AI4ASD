@@ -8,7 +8,7 @@ action_cls_mapping ={'armflapping':'ArmFlapping', 'spinning':'Spinning', 'headba
 cls_idx_mapping = {'ArmFlapping':1, 'Spinning':2, 'HeadBanging':3, 'ToyPlaying':4, 'Jumping':5, 'etc':6}
 
 file_dir = '/home/ych/data/SSBD/Dataset_revised_ych/'
-gt_dir = '/home/ych/data/SSBD/Annotations_revised_ych'
+gt_dir = 'Annotations_revised_SSBD'
 
 gt_list = []
 gt_list += [os.path.join(gt_dir, f) for f in sorted(os.listdir(gt_dir)) if f.split(".")[-1] == "xml"]
