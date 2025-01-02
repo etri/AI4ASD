@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<video id="v_ArmFlapping_09" keyword="Autism / Asperger's Flapping Arms Hands Fingers III">  
+   <url>http://www.youtube.com/watch?v=C_O8vyrSt0Q</url>  
+   <height>360</height>
+   <width>480</width>
+   <frames>5040</frames>
+   <persons>1</persons>  
+   <duration>169s</duration>
+   <conversation>no</conversation>
+   <behaviours count="5" id="b_Set_01">	
+      <behaviour id="b_01">		
+         <time>0005:0015</time>		
+         <bodypart>hand</bodypart>		
+         <category>armflapping</category>		
+         <intensity>low</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_02">		
+         <time>0028:0044</time>		
+         <bodypart>hand</bodypart>		
+         <category>armflapping</category>		
+         <intensity>low</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_03">		
+         <time>0048:0112</time>		
+         <bodypart>hand</bodypart>		
+         <category>armflapping</category>		
+         <intensity>low</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_04">		
+         <time>0124:0140</time>		
+         <bodypart>hand</bodypart>		
+         <category>armflapping</category>		
+         <intensity>low</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_05">		
+         <time>0205:0219</time>		
+         <bodypart>hand</bodypart>		
+         <category>armflapping</category>		
+         <intensity>low</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+      <behaviour id="b_06">		
+         <time>0:3</time>		
+         <bodypart>hand</bodypart>		
+         <category>armflapping</category>		
+         <intensity>low</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+      <behaviour id="b_07">		
+         <time>20:24</time>		
+         <bodypart>hand</bodypart>		
+         <category>armflapping</category>		
+         <intensity>low</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+      <behaviour id="b_08">		
+         <time>0117:0119</time>		
+         <bodypart>hand</bodypart>		
+         <category>armflapping</category>		
+         <intensity>low</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+      <behaviour id="b_09">		
+         <time>0142:0150</time>		
+         <bodypart>hand</bodypart>		
+         <category>armflapping</category>		
+         <intensity>low</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+      <behaviour id="b_10">		
+         <time>0153:0205</time>		
+         <bodypart>hand</bodypart>		
+         <category>armflapping</category>		
+         <intensity>low</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+      <behaviour id="b_11">		
+         <time>0223:0234</time>		
+         <bodypart>hand</bodypart>		
+         <category>armflapping</category>		
+         <intensity>low</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+      <behaviour id="b_12">		
+         <time>0239:0245</time>		
+         <bodypart>hand</bodypart>		
+         <category>armflapping</category>		
+         <intensity>low</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+   </behaviours>
+</video>

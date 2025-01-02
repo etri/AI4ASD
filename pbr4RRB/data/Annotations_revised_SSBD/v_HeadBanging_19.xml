@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<video id="v_HeadBanging_19" keyword="Just two little autistic kids">  
+   <url>http://www.youtube.com/watch?v=I38WtUMuQwM</url>
+   <height>360</height>
+   <width>480</width>
+   <frames>7290</frames>
+   <persons>5</persons>  
+   <duration>243s</duration>
+   <conversation>yes</conversation>
+   <behaviours count="4" id="b_Set_01">	
+      <behaviour id="b_01">		
+         <time>0030:0040</time>		
+         <bodypart>head</bodypart>		
+         <category>headbanging</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour> 
+	  <behaviour id="b_02">		
+         <time>0204:0230</time>		
+         <bodypart>arm</bodypart>		
+         <category>armflapping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_03">		
+         <time>0256:0307</time>		
+         <bodypart>arm</bodypart>		
+         <category>armflapping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_04">		
+         <time>0326:0331</time>		
+         <bodypart>arm</bodypart>		
+         <category>armflapping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_05">		
+         <time>013:015</time>		
+         <bodypart>body</bodypart>		
+         <category>jumping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_06">		
+         <time>025:28</time>		
+         <bodypart>body</bodypart>		
+         <category>jumping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_07">		
+         <time>46:47</time>		
+         <bodypart>arm</bodypart>		
+         <category>armflapping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_08">		
+         <time>56:118</time>		
+         <bodypart>arm</bodypart>		
+         <category>toyplaying</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_09">		
+         <time>152:154</time>		
+         <bodypart>arm</bodypart>		
+         <category>toyplaying</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_10">		
+         <time>0201:0206</time>		
+         <bodypart>arm</bodypart>		
+         <category>armflapping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_11">		
+         <time>0208:0222</time>		
+         <bodypart>arm</bodypart>		
+         <category>armflapping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_12">		
+         <time>0224:0226</time>		
+         <bodypart>arm</bodypart>		
+         <category>armflapping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_13">		
+         <time>0228:0231</time>		
+         <bodypart>arm</bodypart>		
+         <category>armflapping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_14">		
+         <time>0236:0240</time>		
+         <bodypart>arm</bodypart>		
+         <category>armflapping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_15">		
+         <time>0243:0248</time>		
+         <bodypart>arm</bodypart>		
+         <category>armflapping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_16">		
+         <time>0254:0258</time>		
+         <bodypart>arm</bodypart>		
+         <category>armflapping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_17">		
+         <time>0301:0309</time>		
+         <bodypart>arm</bodypart>		
+         <category>armflapping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_18">		
+         <time>0326:0328</time>		
+         <bodypart>arm</bodypart>		
+         <category>armflapping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_19">		
+         <time>0326:0328</time>		
+         <bodypart>body</bodypart>		
+         <category>jumping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_20">		
+         <time>0330:0331</time>		
+         <bodypart>arm</bodypart>		
+         <category>armflapping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+	  <behaviour id="b_21">		
+         <time>0333:0334</time>		
+         <bodypart>arm</bodypart>		
+         <category>armflapping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>
+   </behaviours>
+</video>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<video id="v_HeadBanging_07" keyword="Autism....Jaiden">  
+   <url>http://www.youtube.com/watch?v=nwLp0k1xa0o</url>
+   <height>144</height>
+   <width>176</width>
+   <frames>2708</frames>
+   <persons>2</persons>  
+   <duration>180s</duration>
+   <conversation>yes</conversation>
+   <behaviours count="1" id="b_Set_01">	
+      <behaviour id="b_01">		
+         <time>0055:0104</time>		
+         <bodypart>head</bodypart>		
+         <category>headbanging</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>  
+      <behaviour id="b_02">		
+         <time>0013:016</time>		
+         <bodypart>head</bodypart>		
+         <category>headbanging</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>  
+      <behaviour id="b_03">		
+         <time>0024:026</time>		
+         <bodypart>hand</bodypart>		
+         <category>armflapping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>  
+      <behaviour id="b_04">		
+         <time>0046:048</time>		
+         <bodypart>hand</bodypart>		
+         <category>armflapping</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>  
+      <behaviour id="b_05">		
+         <time>0128:0132</time>		
+         <bodypart>head</bodypart>		
+         <category>headbanging</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>  
+      <behaviour id="b_06">		
+         <time>0243:0245</time>		
+         <bodypart>head</bodypart>		
+         <category>headbanging</category>		
+         <intensity>high</intensity>		
+         <modality>video</modality>	
+      </behaviour>  
+   </behaviours>
+</video>
