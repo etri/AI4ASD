@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<video>
+   <behaviours>
+      <behaviour>		
+         <time>3:10</time>		
+         <category>headbanging</category>		
+      </behaviour>
+      <behaviour>		
+         <time>13:22</time>		
+         <category>headbanging</category>		
+      </behaviour>
+   </behaviours>
+</video>

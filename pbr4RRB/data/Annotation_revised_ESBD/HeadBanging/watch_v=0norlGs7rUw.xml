@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<video>
+   <behaviours>
+      <behaviour>		
+         <time>2:6</time>		
+         <category>headbanging</category>		
+      </behaviour>
+      <behaviour>		
+         <time>10:22</time>		
+         <category>headbanging</category>		
+      </behaviour>
+      <behaviour>		
+         <time>24:26</time>		
+         <category>headbanging</category>		
+      </behaviour>
+      <behaviour>		
+         <time>27:34</time>		
+         <category>headbanging</category>		
+      </behaviour>
+      <behaviour>		
+         <time>43:46</time>		
+         <category>headbanging</category>		
+      </behaviour>
+      <behaviour>		
+         <time>48:50</time>		
+         <category>headbanging</category>		
+      </behaviour>
+      <behaviour>		
+         <time>53:108</time>		
+         <category>headbanging</category>		
+      </behaviour>
+      <behaviour>		
+         <time>113:116</time>		
+         <category>headbanging</category>		
+      </behaviour>
+   </behaviours>
+</video>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<video>
+   <behaviours>
+      <behaviour>		
+         <time>1:5</time>		
+         <category>headbanging</category>		
+      </behaviour>
+      <behaviour>		
+         <time>6:21</time>		
+         <category>headbanging</category>		
+      </behaviour>
+      <behaviour>		
+         <time>22:25</time>		
+         <category>headbanging</category>		
+      </behaviour>
+      <behaviour>		
+         <time>33:41</time>		
+         <category>headbanging</category>		
+      </behaviour>
+      <behaviour>		
+         <time>44:45</time>		
+         <category>headbanging</category>		
+      </behaviour>
+   </behaviours>
+</video>
