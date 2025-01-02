@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<video>
+   <behaviours>
+      <behaviour>		
+         <time>0:2</time>		
+         <category>armflapping</category>		
+      </behaviour>
+   </behaviours>
+</video>

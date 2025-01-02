@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<video>
+   <behaviours>
+      <behaviour>		
+         <time>1:10</time>		
+         <category>armflapping</category>		
+      </behaviour>
+      <behaviour>		
+         <time>17:18</time>		
+         <category>armflapping</category>		
+      </behaviour>
+      <behaviour>		
+         <time>36:37</time>		
+         <category>armflapping</category>		
+      </behaviour>
+   </behaviours>
+</video>
