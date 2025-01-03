@@ -47,14 +47,10 @@ def parse_args():
     # Visualize Flag
     parser.add_argument('--showFps', type=bool, default=False)
     parser.add_argument('--viz_scale', type=int, default=1)  # 2
-    parser.add_argument('--viz_skeleton', type=bool, default=False)
-    parser.add_argument('--visualize_red_dot', type=bool, default=False)
-
     parser.add_argument('--visualize_result', type=bool, default=True)
     parser.add_argument('--saveVideo', type=bool, default=False)
     parser.add_argument('--saveResult', type=bool, default=False)
-    parser.add_argument('--visualize_screenshot', type=bool, default=False)
-
+    
     return parser
 
 
