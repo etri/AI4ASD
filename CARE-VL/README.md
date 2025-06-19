@@ -39,8 +39,7 @@ All code and datasets related to this work will be made available.
 
 ## Experimental Results
 
-Examples of result images on the *SSBD* and *ESBD* dataset. 
-The green and red colors denote whether a frame belongs to a repetitive segment or not, respectively.
+Comparison of CARE-VL and the general VLM in generating detailed captions and MC-QA responses for the social indicator.
 
 <img src="fig_result.png" width="1000">
 
