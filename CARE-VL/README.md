@@ -43,26 +43,18 @@ Comparison of CARE-VL and the general VLM in generating detailed captions and MC
 
 <img src="fig_result.png" width="1000">
 
+Performance comparison between baseline models and CARE-VL. MC-QA measures correct response identification across social indicators, while caption evaluates descriptive quality.
 | Model | **Overall Acc.** | Response to Name | Eye Contact | Imitation Behavior | Social Smiling | Pointing | Caption |
 |-------|------------------|------------------|-------------|--------------------|----------------|----------|---------|
-| Chat-UniVi-7B [[jin2024chat]] | 28.8 | **69.7** | 35.6 | 14.6 | 20.1 | 21.5 | 48.8 |
-| Video-LLaVA-7B [[lin2023video]] | 29.1 | **69.7** | 35.4 | 14.1 | 13.6 | 21.2 | 30.5 |
-| LLaVA-Video-7B [[zhang2024video]] | 31.5 | 62.9 | 37.1 | 16.2 | 17.4 | 29.8 | _**57.7**_ |
-| LLaVA-NeXT-Video-7B [[zhang2024llavanextvideo]] | 34.5 | 32.6 | 39.1 | 25.8 | 38.3 | 37.6 | 55.3 |
-| LLaVA-OV-0.5B [[li2024llava]] | 49.2 | 60.2 | 39.6 | 58.1 | 34.5 | 52.5 | 35.3 |
-| LLaVA-OV-7B [[li2024llava]] | _**61.2**_ | 36.4 | _**60.9**_ | _**68.4**_ | _**57.6**_ | _**73.5**_ | 53.3 |
+| Chat-UniVi-7B  | 28.8 | **69.7** | 35.6 | 14.6 | 20.1 | 21.5 | 48.8 |
+| Video-LLaVA-7B  | 29.1 | **69.7** | 35.4 | 14.1 | 13.6 | 21.2 | 30.5 |
+| LLaVA-Video-7B  | 31.5 | 62.9 | 37.1 | 16.2 | 17.4 | 29.8 | _**57.7**_ |
+| LLaVA-NeXT-Video-7B  | 34.5 | 32.6 | 39.1 | 25.8 | 38.3 | 37.6 | 55.3 |
+| LLaVA-OV-0.5B  | 49.2 | 60.2 | 39.6 | 58.1 | 34.5 | 52.5 | 35.3 |
+| LLaVA-OV-7B  | _**61.2**_ | 36.4 | _**60.9**_ | _**68.4**_ | _**57.6**_ | _**73.5**_ | 53.3 |
 | **CARE-VL (Ours)** | **84.6** | _**68.9**_ | **72.7** | **94.2** | **92.0** | **92.4** | **69.5** |
 
 ---
-
-### References
-
-- [jin2024chat]: https://arxiv.org/abs/2401.xxxx
-- [lin2023video]: https://arxiv.org/abs/2309.xxxx
-- [zhang2024video]: https://arxiv.org/abs/2402.xxxx
-- [zhang2024llavanextvideo]: https://arxiv.org/abs/2403.xxxx
-- [li2024llava]: https://arxiv.org/abs/2312.xxxx
-
 
 
 
