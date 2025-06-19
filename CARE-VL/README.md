@@ -22,7 +22,7 @@ Our end-to-end framework combines visual understanding and linguistic reasoning,
 19/06/2025: Project page built
 >
 
-All code and datasets related to this work will be made available. 
+All code related to this work will be made available. 
 
 ## Get Started
 
