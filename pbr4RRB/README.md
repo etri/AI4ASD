@@ -83,5 +83,18 @@ The green and red colors denote whether a frame belongs to a repetitive segment 
 ## LICENSE
 Please see [LICENSE.md](../LICENSE.md).
 
+## Citation
+If you make use of our work, please cite our paper.
+```bibtex
+@article{yoo2024unified,
+  title={A unified framework to stereotyped behavior detection for screening Autism Spectrum Disorder},
+  author={Yoo, Cheol-Hwan and Yoo, Jang-Hee and Back, Moon-Ki and Wang, Woo-Jin and Shin, Yong-Goo},
+  journal={Pattern Recognition Letters},
+  volume={186},
+  pages={156--163},
+  year={2024},
+  publisher={Elsevier}
+}
+
 ## Contact
 If you have any question or comment, please email <ch.yoo@etri.re.kr>.
