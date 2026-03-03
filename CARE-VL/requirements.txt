@@ -1,0 +1,31 @@
+# CARE-VL Requirements
+# Based on LLaVA-NeXT with additional dependencies for CARE-VL
+
+# Core
+torch>=2.0.0
+transformers>=4.36.0
+tokenizers>=0.15.0
+accelerate>=0.25.0
+peft>=0.7.0
+
+# LLaVA dependencies
+llava @ git+https://github.com/LLaVA-VL/LLaVA-NeXT.git
+
+# Video processing
+decord>=0.6.0
+opencv-python>=4.8.0
+av>=10.0.0
+
+# Data & ML
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+openpyxl>=3.1.0
+tqdm>=4.65.0
+
+# Training
+deepspeed>=0.12.0
+wandb>=0.16.0
+
+# Image processing
+Pillow>=10.0.0
