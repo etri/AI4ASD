@@ -1,0 +1,5 @@
+datasets:
+- json_path: dataset/SIIC_visual_instruct_caption_5_indicator_SNUBH.json
+  sampling_strategy: "all"
+- json_path: dataset/SIIC_visual_instruct_mcqa_5_indicator_SNUBH.json
+  sampling_strategy: "all"

@@ -21,20 +21,123 @@ Our end-to-end framework combines visual understanding and linguistic reasoning,
 ## Updates
 19/06/2025: Project page built
 >
+25/06/2025: Code released
 
-All code related to this work will be made available. 
+All code related to this work is now available. 
 
 ## Get Started
+- Clone this repo and install dependencies:
+```bash
+# Install Python>=3.10 environment with PyTorch>=2.0
+git clone https://github.com/etri/AI4ASD.git
+cd AI4ASD/CARE-VL
 
+# Install LLaVA-NeXT (base framework)
+pip install git+https://github.com/LLaVA-VL/LLaVA-NeXT.git
+
+# Install additional dependencies
+pip install -r requirements.txt
+```
+
+## Data Preparation
+
+### 1. Prepare SIIC Video Data
+Organize your video data following this structure:
+```
+/path/to/SIIC_data/
+├── <participant_id>/
+│   ├── 03/                     # name-calling indicator
+│   │   ├── rec/               # video recordings
+│   │   │   ├── 000_*.mp4
+│   │   │   ├── 001_*.mp4
+│   │   │   └── 002_*.mp4
+│   │   └── 01/                # tagging info
+│   │       ├── 000/event_info.txt
+│   │       ├── 001/event_info.txt
+│   │       └── 002/event_info.txt
+│   ├── 04/                     # eye-contact
+│   ├── 06/                     # imitation-behavior
+│   ├── 07/                     # social-smiling
+│   └── 08/                     # pointing
+└── ...
+```
+
+### 2. Generate Instruction-Tuning Dataset
+```bash
+python data/generate_visual_instruction_tuning_DB.py \
+    --data_dir /path/to/SIIC_data/ \
+    --output_dir dataset/ \
+    --output_prefix SIIC_visual_instruct
+```
+This generates:
+- `SIIC_visual_instruct_caption.json` — Detailed captions with label-guided reasoning
+- `SIIC_visual_instruct_mcqa.json` — MC-QA pairs for response classification
 
 ## Training
 
+### Stage 1: VLM Fine-tuning
+Fine-tune LLaVA-OneVision on the SIIC instruction-tuning dataset:
+```bash
+# Edit train_vlm.sh to set your paths
+# - VIDEO_FOLDER: path to video data
+# - DATA_PATH: path to dataset config (configs/onevision_SIIC.yaml)
+# - Update dataset JSON paths in configs/onevision_SIIC.yaml
+
+bash train_vlm.sh
+```
+
+Key training hyperparameters:
+| Parameter | Value |
+|-----------|-------|
+| Base model | `lmms-lab/llava-onevision-qwen2-7b-ov` |
+| Learning rate | 1e-5 |
+| Batch size | 1 (per GPU) |
+| Gradient accumulation | 2 |
+| Epochs | 1 |
+| Frames per video | 16 |
+| DeepSpeed | ZeRO Stage 3 |
 
 ## Test
 
+### Stage 1: VLM Inference (Clip-level)
+```bash
+python inference_vlm.py \
+    --model_path checkpoints/care-vl-siglip-Qwen2-7B-SIIC \
+    --data_dir /path/to/test_data/ \
+    --output_dir results/ \
+    --question_type MCQA DC
+```
 
-## Model
+### Stage 2: LLM Classification (Subject-level)
+Uses few-shot exemplars from the source site (SNUBH) with DSM-5 criteria:
+```bash
+python inference_llm.py \
+    --test_caption_json results/caption_inference_results.json \
+    --test_mcqa_json results/mcqa_inference_results.json \
+    --test_tagging_xlsx /path/to/PNU_ASD_TD_tagging.xlsx \
+    --test_site PNU \
+    --fewshot_caption_json dataset/SIIC_visual_instruct_caption_5_indicator_SNUBH.json \
+    --fewshot_mcqa_json dataset/SIIC_visual_instruct_mcqa_5_indicator_SNUBH.json \
+    --fewshot_tagging_xlsx /path/to/SNUBH_ASD_TD_tagging.xlsx \
+    --fewshot_site SNUBH \
+    --asd_examples AI-153-03 AI-200-03 \
+    --td_examples AI-232-03 AI-240-04 \
+    --llm_model meta-llama/Llama-3.2-3B-Instruct
+```
 
+### Evaluation with LLaVA-Critic
+```bash
+# Pointwise evaluation (caption quality scoring)
+python pointwise_critic.py \
+    --json_path results/caption_inference_results.json \
+    --output_path results/pointwise_scores.json \
+    --data_dir /path/to/test_data/
+
+# Pairwise evaluation (CARE-VL vs general VLM)
+python pairwise_critic.py \
+    --json_path results/pairwise_comparison.json \
+    --output_path results/pairwise_scores.json
+```
 
 
 ## Experimental Results
@@ -60,6 +163,19 @@ Performance comparison between baseline models and CARE-VL. MC-QA measures corre
 
 ## LICENSE
 Please see [LICENSE.md](../LICENSE.md).
+
+## Citation
+If you make use of our work, please cite our paper.
+```bibtex
+@inproceedings{yoo2025care,
+  title={CARE-VL: A Domain-Specialized Vision-Language Model for Early ASD Screening},
+  author={Yoo, Cheol-Hwan and Yoo, Jang-Hee and Jang, Jaeyoon},
+  booktitle={International Conference on Medical Image Computing and Computer-Assisted Intervention},
+  pages={57--66},
+  year={2025},
+  organization={Springer}
+}
+```
 
 ## Contact
 If you have any question or comment, please email <ch.yoo@etri.re.kr>.
