@@ -132,11 +132,6 @@ python pointwise_critic.py \
     --json_path results/caption_inference_results.json \
     --output_path results/pointwise_scores.json \
     --data_dir /path/to/test_data/
-
-# Pairwise evaluation (CARE-VL vs general VLM)
-python pairwise_critic.py \
-    --json_path results/pairwise_comparison.json \
-    --output_path results/pairwise_scores.json
 ```
 
 
