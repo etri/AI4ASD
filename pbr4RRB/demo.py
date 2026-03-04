@@ -96,7 +96,7 @@ if __name__ == '__main__':
         action_cls_dict = {'ArmFlapping': 0, 'Spinning': 1, 'HeadBanging': 2}
         action_cls = ['ArmFlapping', 'Spinning', 'HeadBanging']
         #action_cls = ['ArmFlapping', 'Spinning', 'HeadBanging', 'ToyPlaying', 'Jumping', 'etc']
-        state_dict = torch.load('checkpoints/RRB_RA_Net_tr_SSBD_parsing.checkpoint)
+        state_dict = torch.load('checkpoints/RRB_RA_Net_tr_SSBD_parsing.checkpoint')
 
 
     model_RePNet.load_state_dict(state_dict)
