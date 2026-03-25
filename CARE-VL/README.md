@@ -144,8 +144,8 @@ python pointwise_critic.py \
 Download the pre-trained weights and place them under the `checkpoints/` directory:
 ```bash
 # After downloading from Google Drive
-mkdir -p checkpoints/care-vl-7b
-# Move downloaded files to checkpoints/care-vl-7b/
+mkdir -p checkpoints/care-vl-siglip-Qwen2-7B-SIIC
+# Move downloaded files to checkpoints/care-vl-siglip-Qwen2-7B-SIIC/
 ```
 
 ## Experimental Results
