@@ -116,8 +116,14 @@ def main():
     device_map = "auto"
 
     print(f"Loading model from: {args.model_path}")
+    overwrite_config = {
+        "tie_word_embeddings": False,
+        "use_cache": True,
+        "vocab_size": 152064,
+    }
     tokenizer, model, image_processor, max_length = load_pretrained_model(
-        args.model_path, None, model_name, device_map=device_map, attn_implementation="sdpa"
+        args.model_path, None, model_name, device_map=device_map,
+        attn_implementation="sdpa", overwrite_config=overwrite_config
     )
     model.eval()
 
