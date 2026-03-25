@@ -135,6 +135,19 @@ python pointwise_critic.py \
 ```
 
 
+## Model
+
+| Model | Base Model | Training Data | Download |
+|-------|-----------|---------------|----------|
+| CARE-VL-7B | LLaVA-OneVision-7B | SIIC (5 indicators) | [Google Drive](https://drive.google.com/drive/u/0/folders/1kqJxqm1QvigJB-D5yK0JFJY-yvoIEaok) |
+
+Download the pre-trained weights and place them under the `checkpoints/` directory:
+```bash
+# After downloading from Google Drive
+mkdir -p checkpoints/care-vl-7b
+# Move downloaded files to checkpoints/care-vl-7b/
+```
+
 ## Experimental Results
 
 Comparison of CARE-VL and the general VLM in generating detailed captions and MC-QA responses for the social indicator.
